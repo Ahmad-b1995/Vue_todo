@@ -9,14 +9,10 @@
           :id="index"
           :name="item"
           :key="index"
-          :checked="item.done"
+          :checked="item.checked"
+          v-model="list[index].checked"
         />
-        <label
-          :id="index"
-          :class="strike_through"
-          for="vehicle1"
-          :key="`label${index}`"
-        >
+        <label :id="index" for="vehicle1" :key="`label${index}`">
           {{ item.title }}</label
         >
 
@@ -36,7 +32,7 @@ export default {
   },
   methods: {
     add_to_list: function (event) {
-      this.list.unshift({ 'title': event.target.value, 'done': false });
+      this.list.unshift({ 'title': event.target.value, 'checked': false });
       this.$refs.input.value = "";
     },
   },
